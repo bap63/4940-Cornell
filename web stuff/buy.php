@@ -24,21 +24,38 @@
      <p>&nbsp</p>
      
       	<?php
+      	
+      	if ($_POST['group1']=='buy'){
+      	
 			print("<h2>Top Results For ".$_POST['search'].":</h2>");
+			print("
+			
+			<p>&nbsp</p>
+        
+        		<div id=\"results\">
+        			<p>&nbsp</p>
+        			<h3>book one</h3>
+        			<h3>book two</h3>
+        			<h3>book three</h3>
+        			<p>&nbsp</p>
+        		</div>
+        
+        		<p>&nbsp</p>
+        		<p>&nbsp</p>
+        
+        ");
+			
+		}
+		else {
+		
+			print("<p>this is where our sell stuff will go<p>");
+			print("<h2>Sell Books Related to ".$_POST['search']."</h2>");
+		
+		}
+			
 		?>
       
-      	<p>&nbsp</p>
-        
-        <div id="results">
-        	<p>&nbsp</p>
-        	<h3>book one</h3>
-        	<h3>book two</h3>
-        	<h3>book three</h3>
-        	<p>&nbsp</p>
-        </div>
-        
-        <p>&nbsp</p>
-        <p>&nbsp</p>
+      	
 
     </div>
     
