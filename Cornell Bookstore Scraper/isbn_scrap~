@@ -1,0 +1,6 @@
+import csv
+
+books = csv.reader(open("all_books.csv", "wb"))
+for book in books:
+    print book[2]
+
