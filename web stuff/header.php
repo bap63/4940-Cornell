@@ -23,8 +23,6 @@ if(isset($scripts)){
 }
 
 ?>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
   <body>
 	<div id ="main">

@@ -24,9 +24,6 @@
      <p>&nbsp</p>
      
       	<?php
-      	
-      	
-		
 			print("
 				<p>this is where our sell stuff will go<p>
 				<p>&nbsp</p>

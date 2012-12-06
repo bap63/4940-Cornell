@@ -1,18 +1,17 @@
 <?php
     $page = ' - Test Page';//Set title of page
-    
     //This is how you add javascript or styles to a page
-    $styles[] = 'Styles/reset.css';
-    //$scripts[] = 'https://www.google.com/jsapi';
-    //$scripts[] = 'Scripts/index_1.js';
-    //$scripts[] = 'Scripts/index_2.js';
-    //$scripts[] = 'Scripts/index_3.js';
+    $styles[] = 'styles/reset.css';
+    $styles[] = 'http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css';
+    $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
+    $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
+    $scripts[] = 'scripts/autocomplete.js';
     include 'header.php';
 ?>
-    <!- Page content goes here -->
     <h1>Page for Testing</h1>
     
 <?php
+    /*
     $sql = "SELECT  * FROM course LIMIT 0,10";//Fetches top ten courses
     $ctl = $dbh->prepare($sql);
     $ctl->execute();
@@ -25,9 +24,18 @@
         $lineOut = "<p>$name  $term  $instructor</p>";
         print $lineOut;
     }
+    */
+    $sql = "SELECT  name FROM course WHERE term = 'Spring-2013'";//Fetches top ten courses
+    $ctl = $dbh->prepare($sql);
+    $ctl->execute();
+    $courses = $ctl->fetchAll(PDO::FETCH_ASSOC);
     
+
 ?>
-    <p>More html and junk</p>
+    <div class="ui-widget">
+        <label for="courses">Courses</label>
+        <input id="courses" />
+    </div>
     
 <?php
     include 'footer.php';
