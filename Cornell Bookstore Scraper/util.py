@@ -97,17 +97,6 @@ def print_table(self, dept):
                                 if len(row) == 7 and recentClass:
                                         out.writerow(row)
                                         i+=1
-                                if len(row) == 7 and not recentClass:
-                                        if i == 0:
-                                                try:
-                                                        self.find_elements_by_id("ctl00_ContentPlaceHolder1_noCoursesAvailableLabel")
-                                                        print "Department has no courses - " + dept 
-                                                        return ""
-                                                except:
-                                                        print "No data retrieved in dept listing"
-                                        else:
-                                                print "Succesfully wrote file for " + dept
-                                                return ""
                         print "Succesfully wrote file for " + dept
                         return "" 
                 except Exception as e: 
@@ -144,6 +133,3 @@ def fetch_books(self):
                         #print e
                         print "Retrying book fetch..."
                         time.sleep(1)
-
-
-                        

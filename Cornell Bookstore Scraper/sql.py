@@ -36,5 +36,19 @@ def courses():
         line +=  "(null,'%s','%s','%s'); " % (name,term,instructor)
         out.write(line + "\n");
         
-courses()
-books()
+def missingCourse():
+    out = open("sql_out_courses_missing.sql", "w")
+    file = csv.reader(open("missing.csv", "rb"))
+    for f in file:
+        name =f[0].strip()
+        term = f[1].strip()
+        r = re.compile("([a-zA-Z]+)([0-9]+)")
+        m = r.match(name)
+        name = m.group(1) + "-" + m.group(2)
+        line = "INSERT INTO course VALUES"
+        line +=  "(null,'%s','%s','%s'); " % (name,term,'')
+        out.write(line + "\n");
+        
+missingCourse()
+#courses()
+#books()

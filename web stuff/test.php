@@ -25,17 +25,13 @@
         print $lineOut;
     }
     */
-    $sql = "SELECT  name FROM course WHERE term = 'Spring-2013'";//Fetches top ten courses
-    $ctl = $dbh->prepare($sql);
-    $ctl->execute();
-    $courses = $ctl->fetchAll(PDO::FETCH_ASSOC);
-    
-
 ?>
-    <div class="ui-widget">
-        <label for="courses">Courses</label>
-        <input id="courses" />
-    </div>
+    <form action="displayCourse.php" method="post">
+	Please Select A Course
+	<input type="text" id="courseSearch" name = "courseSearch" />
+	<br />
+	<input type="submit" value="Search" />
+    </form>
     
 <?php
     include 'footer.php';

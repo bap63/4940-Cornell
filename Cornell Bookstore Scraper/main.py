@@ -43,8 +43,7 @@ def fetchAll(all):
             except:
                 log.write("Could not find books for " + d + "\n")
     
-def fetchSingle(depts):
-    
+def fetchSingle(depts):  
     for d in depts:
         print "Starting dept: " + d
         driver.get(uriBook)
@@ -87,7 +86,28 @@ driver.get(uriBook)
 raw_input("Login with NETID. Then press enter to continue...")
 driver.get(uriBook)
 
+def fetchSingleCourse(depts):
+    for d in depts:
+        print "Starting dept: " + d
+        driver.get(uriBook)
+        time.sleep(1)
+        dropID = "ctl00_ContentPlaceHolder1_deptListDropDownList"
+        util.click_stale_dropdown(driver, dropID, d)
+        time.sleep(1)
+        util.print_table(driver,d)
+        
+def fetchAllCourses():
+    dept = util.print_stale_dropdown(driver,"ctl00_ContentPlaceHolder1_deptListDropDownList")
+    for d in dept:
+        print "Starting dept: " + d
+        driver.get(uriBook)
+        time.sleep(1)
+        dropID = "ctl00_ContentPlaceHolder1_deptListDropDownList"
+        util.click_stale_dropdown(driver, dropID, d)
+        time.sleep(1)
+        util.print_table(driver,d)
 
-depts = ['ENGL - ENGLISH']
-fetchSingle(depts)
+
+depts = ['AEM - APPLIED ECONOMICS & MANAGEMENT']
+fetchSingleCourse(depts)
 #fetchAll(False)

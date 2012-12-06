@@ -1,19 +1,23 @@
 <?php
-    $page = ' - Autocomplete Test';//Set title of page
-    
-    //This is how you add javascript or styles to a page
-    $styles[] = 'Styles/reset.css';
-    //$scripts[] = 'https://www.google.com/jsapi';
-    //$scripts[] = 'Scripts/index_1.js';
-    //$scripts[] = 'Scripts/index_2.js';
-    //$scripts[] = 'Scripts/index_3.js';
-    include 'header.php';
-?>
-    <!- Page content goes here -->
+require "util/functions.php";
+if ( !isset($_REQUEST['term']) )
+	exit;
+$query = $_REQUEST['term'];
+
+$sql = "SELECT name, term FROM course WHERE name like '$query%' LIMIT 0,20";//Fetches top 20 courses
+$ctl = $dbh->prepare($sql);
+$ctl->execute();
+$courses = $ctl->fetchAll(PDO::FETCH_ASSOC);
+$data = array();
+foreach($courses as $course){
+    $data[] = array(
+			'label' => $course['name'] . " (" . $course['term'].")",
+			'value' => $course['name'] . " " . $course['term']
+		);
+}
 
 
-
-
-<?php
-    include 'footer.php';
+//Encoded results as json data
+echo json_encode($data);
+flush();
 ?>
