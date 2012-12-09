@@ -107,7 +107,7 @@ def fetchAllCourses():
         time.sleep(1)
         util.print_table(driver,d)
 
-
+fetchAllCourses()
 depts = ['AEM - APPLIED ECONOMICS & MANAGEMENT']
-fetchSingleCourse(depts)
+#fetchSingleCourse(depts)
 #fetchAll(False)

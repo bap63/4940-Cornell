@@ -11,6 +11,7 @@
 <?php
 
 require "util/functions.php";
+
 foreach($styles as $style)
 {
 	print "<link rel=\"stylesheet\" type=\"text/css\" href=\"$style\"/>\n";

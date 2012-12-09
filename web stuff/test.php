@@ -11,6 +11,8 @@
     <h1>Page for Testing</h1>
     
 <?php
+    
+    
     /*
     $sql = "SELECT  * FROM course LIMIT 0,10";//Fetches top ten courses
     $ctl = $dbh->prepare($sql);

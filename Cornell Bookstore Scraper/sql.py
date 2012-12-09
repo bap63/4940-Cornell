@@ -49,6 +49,6 @@ def missingCourse():
         line +=  "(null,'%s','%s','%s'); " % (name,term,'')
         out.write(line + "\n");
         
-missingCourse()
-#courses()
+#missingCourse()
+courses()
 #books()
