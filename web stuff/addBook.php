@@ -1,21 +1,25 @@
 <?php
-    $page = ' - Add Book';//Set title of page
+    $page = ' - Sell Book';//Set title of page
     $styles[] = 'styles/reset.css';
     $styles[] = 'http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css';
     $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
     $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
     $scripts[] = 'scripts/autocomplete.js';
     include 'header.php';
-    
+
     $e = isset($_POST['email']);
-    $b = isset($_POST['bid']);
+    $b = isset($_GET['bid']);
     $p = isset($_POST['price']);
     $n = isset($_POST['notes']);
     $error = '';
+    
+    if($b){
+	$bid = $_GET['bid'];
+        $bTitle =getBookTitle($dbh,$bid);
+    }
+    
     //Checks if fields are set
     if($e && $b && $p){
-        $bid = $_POST['bid'];
-        
         //Valids Price Input
         $price = str_replace('$','',$_POST['price']);
         if(!is_numeric($price)){
@@ -50,29 +54,26 @@
             $salt = $hD['salt'];
             $code = $hD['code'];
             $date = 'CURDATE()';
-        
-            $insertValues = "null,$bid,'$email',$price,'$hash','$salt','$notes',$date";
-            $sql = "INSERT INTO post VALUES($insertValues)";            
-            $ctl = $dbh->prepare($sql);
-            $ctl->execute();
-            $success = "Submission successfully posted. Check your email for additional instructions.";
-            $pid = $dbh->lastInsertId();
-                        
+	    
+	    //Inserts new posting for book
+	    $pid = insertPost($dbh,$bid,$email,$price,$hash,$salt,$notes,$date);
+            $success = "Submission successfully posted. Check your email for additional instructions.";     
             $message = "You have successfully posted a book on BookScore. <br />";
-            $message = $message. " It is import you do not delete this email:<br />";
+	    $message = $message. " It is important you do not delete this email:<br />";
+            $message = $message. "'$bTitle'<br />";
             $message = $message." Unique <br />";
             $message = $message."Access Code: $code<br />";
             sendPost($email,$pid,$code);
         }
     }
 ?>
-    <form action="addBook.php" method="post">
+    <h1><?php echo $bTitle;?></h1>
+    <form action="addBook.php?bid=<?php echo $bid;?>" method="post">
         <p id="errors"><?php echo $error ?></p>
         <p id="success"><?php echo $success ?></p>
 	Email<input type="text" name = "email" id="emailInput"/><br />
         Price $<input type="text" name = "price" id="priceInput"/><br />
         Notes<input type="text" name="notes" id="noteInput"/>
-        <input type="hidden" name = "bid" value='1' /><br />
 	<input type="submit" value="Add" />
     </form>
     

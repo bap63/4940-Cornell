@@ -36,6 +36,53 @@
         }
         return $string;
     }
+    
+    function getBookTitle($pdoArg,$bid){
+            $sql = "SELECT title FROM book WHERE bid=$bid";
+            $ctl = $pdoArg->prepare($sql);
+            $ctl->execute();
+            $result = $ctl->fetch(PDO::FETCH_ASSOC);
+            if (empty($result))
+            {
+                return null;
+            }
+            return $result['title'];
+    }
+    
+    function getPosts($pdoArg,$bid){
+            $sql = "SELECT * FROM post WHERE bid=$bid order by price";
+            $ctl = $pdoArg->prepare($sql);
+            $ctl->execute();
+            $result = $ctl->fetchAll(PDO::FETCH_ASSOC);
+            if (empty($result))
+            {
+                return null;
+            }
+            return $result;
+    }
+    
+    function getPost($pdoArg,$pid){
+            $sql = "SELECT email,title,p.price FROM post AS p LEFT JOIN book AS b ON p.bid = b.bid WHERE pid=$pid";
+            $ctl = $pdoArg->prepare($sql);
+            $ctl->execute();
+            $result = $ctl->fetch(PDO::FETCH_ASSOC);
+            if (empty($result))
+            {
+                return null;
+            }
+            return $result;
+    }
+    
+    function insertPost($pdoArg,$bid,$email,$price,$hash,$salt,$notes,$date){
+            $insertValues = "null,$bid,'$email',$price,'$hash','$salt','$notes',$date";
+            $sql = "INSERT INTO post VALUES($insertValues)";            
+            $ctl = $pdoArg->prepare($sql);
+            $ctl->execute();
+            $pid = $pdoArg->lastInsertId();
+            return $pid;
+    }
+    
+    
     /*Borrowed from: http://www.addedbytes.com/blog/code/email-address-validation /*/
     function checkEmail($email) {
         // First, we check that there's one @ symbol, and that the lengths are right
@@ -81,5 +128,24 @@
 EOT;
         $headers = "Content-type: text/html\r\n"; 
         mail($email, "Alert From Bookscore", $message, $headers); 
+    }
+    
+    
+    function sendBuy($emailSeller, $emailBuyer,$pid,$title)
+    {
+        $message = <<<EOT
+            <html>
+                <body>
+                <p>Somebody would like to buy your book:<br />
+                $title<br />
+                Their email address is: <br />
+                $emailBuyer <br /><br />
+                To remove this posting please refer to the previous email where: <br />
+                Book ID = $pid <br />
+                </body> 
+            </html>
+EOT;
+        $headers = "Content-type: text/html\r\n"; 
+        mail($emailSeller, "Alert From Bookscore", $message, $headers); 
     }
 ?>
