@@ -1,0 +1,52 @@
+#header {
+    background: #2d2c2c;
+    background-size: 2em;
+    height:4.5em;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    margin: 0em;  
+}
+
+#logo{
+   background: url("../images/logo.png") no-repeat #2d2c2c;
+   margin-left:1em;
+   background-size: 2em;
+   height:2em;
+   padding-left:2.5em;
+   font-size: 28pt;
+   color: #e2e0dc;
+   font-family: Verdana, Arial, sans-serif;
+   -webkit-font-smoothing: antialiased;
+}
+
+#wrapper {
+  width: 900px;
+  margin: 0 auto;
+}
+
+#content {
+  background: url("../images/contentback.png") repeat-x #FFF;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding: 2em;
+  min-height: 37.5em;
+}
+
+
+body {
+  background: #e2e0dc;
+  margin: 0em;
+  font-family:Verdana, Geneva, sans-serif;
+}
+
+
+#footer {
+  background: url("../images/fb.jpg") repeat-x #e2e0dc;
+  height: 6em;
+  font-family: Tahoma, Arial, Helvetica, sans-serif;
+  font-size:14px;
+  color: #333;
+  margin-bottom: 9px;
+  padding-top:4em;
+  text-align: center;
+}

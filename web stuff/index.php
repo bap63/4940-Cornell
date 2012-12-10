@@ -1,14 +1,14 @@
 <?php
-    $page = ' - Test Page';//Set title of page
+    $page = ' - Welcome';//Set title of page
     //This is how you add javascript or styles to a page
     $styles[] = 'styles/reset.css';
+    $styles[] = 'styles/main.css';
     $styles[] = 'http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css';
     $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
     $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
     $scripts[] = 'scripts/autocomplete.js';
     include 'header.php';
 ?>
-    <h1>Page for Testing</h1>
     
 <?php
     
@@ -31,7 +31,6 @@
     <form action="displayCourse.php" method="GET">
 	Please Select A Course
 	<input type="text" id="courseSearch" name = "courseSearch" />
-	<br />
 	<input type="submit" value="Find Books" />
     </form>
     

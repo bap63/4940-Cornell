@@ -26,4 +26,7 @@ if(isset($scripts)){
 ?>
 </head>
   <body>
-	<div id ="main">
+	<div id="header">
+		<div id="logo"><p>BookScore</p>  </div>	
+	</div>
+	<div id ="content">

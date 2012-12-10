@@ -1,8 +1,9 @@
 <?php
     $page = ' - Course Listing';
     $styles[] = 'styles/reset.css';
+    $styles[] = 'styles/main.css';
+    $styles[] = 'styles/table.css';
     $styles[] = 'http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css';
-    $styles[] = 'styles/bookDisplay.css';
     $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
     $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
     $scripts[] = 'scripts/autocomplete.js';
@@ -19,23 +20,23 @@
     $ctl->execute();
     $books = $ctl->fetchAll(PDO::FETCH_ASSOC);
 ?>
-    <h1>Book Listing</h1>
     <table id="booktable">
 <?php
     if (count($books) == 0){
         print "<p>No Books listed for this course</p>";
     }
     else{
-	print "<h1>$cN</h1>";
+	print "<h2>$cN</h2>";
         foreach($books as $book)
         {
+	    $ds = '$';
 	    $b = $book['bid'];
             $out = array();
             $out[] = "<td>".$book['isbn']."</td>";
             $out[] = "<td>".$book['title']."</td>";
             $out[] = "<td>".$book['authr']."</td>";
             $out[] = "<td>".$book['publisher']."</td>";
-            $out[] = "<td>".$book['price']."</td>";
+            $out[] = "<td>$ds".$book['price']."</td>";
             $out[] = "<td><a href='showBooks.php?bid=$b'>Buy</a></td>";
 	    $out[] = "<td><a href='addBook.php?bid=$b'>Sell</a></td>";
             print "<tr>".join('',$out)."</tr>";

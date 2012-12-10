@@ -1,6 +1,7 @@
 <?php
     $page = ' - Delete a Posting';//Set title of page
     $styles[] = 'styles/reset.css';
+    $styles[] = 'styles/main.css';
     $styles[] = 'http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css';
     $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
     $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';

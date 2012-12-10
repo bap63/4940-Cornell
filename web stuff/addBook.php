@@ -1,6 +1,7 @@
 <?php
     $page = ' - Sell Book';//Set title of page
     $styles[] = 'styles/reset.css';
+    $styles[] = 'styles/main.css';
     $styles[] = 'http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css';
     $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
     $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
@@ -67,7 +68,7 @@
         }
     }
 ?>
-    <h1><?php echo $bTitle;?></h1>
+    <h2><?php echo $bTitle;?></h2>
     <form action="addBook.php?bid=<?php echo $bid;?>" method="post">
         <p id="errors"><?php echo $error ?></p>
         <p id="success"><?php echo $success ?></p>

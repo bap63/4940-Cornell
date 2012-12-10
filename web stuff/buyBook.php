@@ -1,6 +1,8 @@
 <?php
     $page = ' - Book Listing';
     $styles[] = 'styles/reset.css';
+    $styles[] = 'styles/main.css';
+    $styles[] = 'styles/table.css';
     $styles[] = 'http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css';
     $styles[] = 'styles/bookDisplay.css';
     $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
@@ -40,9 +42,9 @@
     
     
 ?>
-    <h1>Book Listing</h1>
+    <h2>Book Listing</h2>
     <table id="booktable">
-    <h1><?php echo $title. " - $".$price;?></h1>
+    <h2><?php echo $title. " - $".$price;?></h2>
     <form action="buyBook.php?pid=<?php echo $pid;?>" method="post">
         <p id="errors"><?php echo $error ?></p>
         <p id="success"><?php echo $success ?></p>
