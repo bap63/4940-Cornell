@@ -12,7 +12,7 @@ $request_headers = getBestSupportedMimeType();
         }
     }
     return $headers;
-}*/
+}
 
 if(key($request_headers) == 'text/html'){
     print_r("HTML");
@@ -28,6 +28,13 @@ else if(key($request_headers) == "text/csv"){
 }
 else{
     print_r("Unsupported MIME type");
+}*/
+
+function returnJSON() {
+}
+function returnXML() {
+}
+function returnCSV() {
 }
 
 
