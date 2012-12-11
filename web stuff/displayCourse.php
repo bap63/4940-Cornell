@@ -1,6 +1,10 @@
 <?php
     include 'api/main.php';
-    if(!(key($request_headers) == 'text/html')){
+    $bot = $_SERVER['HTTP_USER_AGENT'];
+    if($bot == 'Googlebot' || $bot == 'Googlebot-richsnippets'){
+    //Added so google can view microdata and so they can't use our api
+	
+    }elseif(!(key($request_headers) == 'text/html')){
     	//if requested content other than HTML
 
 	include 'util/functions.php';
@@ -37,6 +41,7 @@
     $ctl = $dbh->prepare($sql);
     $ctl->execute();
     $books = $ctl->fetchAll(PDO::FETCH_ASSOC);
+    $mD ="itemscope itemtype='http://schema.org/Book'";
 ?>
     <table id="booktable">
 <?php
@@ -50,14 +55,14 @@
 	    $ds = '$';
 	    $b = $book['bid'];
             $out = array();
-            $out[] = "<td>".$book['isbn']."</td>";
-            $out[] = "<td>".$book['title']."</td>";
-            $out[] = "<td>".$book['author']."</td>";
-            $out[] = "<td>".$book['publisher']."</td>";
+            $out[] = "<td itemprop='isbn'>".$book['isbn']."</td>";
+            $out[] = "<td itemprop='name'>".$book['title']."</td>";
+            $out[] = "<td itemprop='author'>".$book['author']."</td>";
+            $out[] = "<td itemprop='publisher'>".$book['publisher']."</td>";
             $out[] = "<td>$ds".$book['price']."</td>";
             $out[] = "<td><a href='showBooks.php?bid=$b'>Buy</a></td>";
 	    $out[] = "<td><a href='addBook.php?bid=$b'>Sell</a></td>";
-            print "<tr>".join('',$out)."</tr>";
+            print "<tr $mD>".join('',$out)."</tr>";
         }
     }
 ?>
