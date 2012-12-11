@@ -2,8 +2,9 @@
 
 //TODO:Finish
 $request_headers = getBestSupportedMimeType();
+//print_r($request_headers);
 
-function get_request_headers() {
+/*function get_request_headers() {
     $headers = array();
     foreach($_SERVER as $key => $value) {
         if(substr($key, 0, 5) == 'HTTP_') {
@@ -11,18 +12,18 @@ function get_request_headers() {
         }
     }
     return $headers;
-}
+}*/
 
-if($request_headers[0] == 'text/html'){
+if(key($request_headers) == 'text/html'){
     print_r("HTML");
 }
-else if($request_headers[0] == "text/json"){
+else if(key($request_headers) == "text/json"){
     print_r("JSON");
 }
-else if($request_headers[0] == "application/xml"){
+else if(key($request_headers) == "application/xml"){
     print_r("XML");
 }
-else if($request_headers[0] == "text/csv"){
+else if(key($request_headers) == "text/csv"){
     print_r("CSV");
 }
 else{
