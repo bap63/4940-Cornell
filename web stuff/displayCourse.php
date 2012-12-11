@@ -7,8 +7,10 @@
     $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
     $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
     $scripts[] = 'scripts/autocomplete.js';
-    include 'header.php';
+    include 'api/main.php';
+
     if( !isset($_GET['courseSearch']) ){
+    	include 'header.php';
         include 'footer.php';
 	exit;
     }
@@ -19,6 +21,14 @@
     $ctl = $dbh->prepare($sql);
     $ctl->execute();
     $books = $ctl->fetchAll(PDO::FETCH_ASSOC);
+
+    if(!(key($request_headers) == 'text/html')){
+    	//if requested content other than HTML
+    	returnMimeType($books);
+    	exit;
+    }
+    
+    include 'header.php';
 ?>
     <table id="booktable">
 <?php
