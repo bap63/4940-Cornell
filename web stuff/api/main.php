@@ -1,7 +1,7 @@
 <?php
 
 //TODO:Finish
-print_r( get_request_headers() );
+$request_headers = get_request_headers();
 
 function get_request_headers() {
     $headers = array();
@@ -13,5 +13,20 @@ function get_request_headers() {
     return $headers;
 }
 
+if($request_headers["Accept"] == "text/html"){
+    print_r("HTML");
+}
+else if($request_headers["Accept"] == "text/json"){
+    print_r("JSON");
+}
+else if($request_headers["Accept"] == "application/xml"){
+    print_r("XML");
+}
+else if($request_headers["Accept"] == "text/csv"){
+    print_r("CSV");
+}
+else{
+    print_r("Unkown MIME type");
+}
 
 ?>
