@@ -50,3 +50,23 @@ body {
   padding-top:4em;
   text-align: center;
 }
+
+input{
+    margin:.75em;
+}
+
+#priceInput{
+    width:2.5em;
+    text-align: center;
+}
+
+#noteInput{
+    width:30em;
+    text-align: center;
+}
+
+#errors{
+    font-style: italic;
+    color:#F00;
+    
+}
