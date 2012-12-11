@@ -1,4 +1,21 @@
 <?php
+    include 'api/main.php';
+    if(!(key($request_headers) == 'text/html')){
+    	//if requested content other than HTML
+
+	include 'util/functions.php';
+	
+	$courseQuery = split(" ",$_GET['courseSearch']);
+	$cN = str_replace('-','',$courseQuery[0]);
+	$cT = $courseQuery[1];
+	$sql = "SELECT  * FROM book where courseName = '$cN' AND term = '$cT'";
+	$ctl = $dbh->prepare($sql);
+	$ctl->execute();
+	$books = $ctl->fetchAll(PDO::FETCH_ASSOC);
+
+    	returnMimeType($request_headers, $books);
+    	exit;
+    }
     $page = ' - Course Listing';
     $styles[] = 'styles/reset.css';
     $styles[] = 'styles/main.css';
@@ -8,7 +25,6 @@
     $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
     $scripts[] = 'scripts/autocomplete.js';
     include 'header.php';
-    include 'api/main.php';
 
     if( !isset($_GET['courseSearch']) ){
         include 'footer.php';
@@ -21,13 +37,6 @@
     $ctl = $dbh->prepare($sql);
     $ctl->execute();
     $books = $ctl->fetchAll(PDO::FETCH_ASSOC);
-
-    if(!(key($request_headers) == 'text/html')){
-    	//if requested content other than HTML
-    	returnMimeType($books);
-    	exit;
-    }
- 
 ?>
     <table id="booktable">
 <?php
@@ -43,7 +52,7 @@
             $out = array();
             $out[] = "<td>".$book['isbn']."</td>";
             $out[] = "<td>".$book['title']."</td>";
-            $out[] = "<td>".$book['authr']."</td>";
+            $out[] = "<td>".$book['author']."</td>";
             $out[] = "<td>".$book['publisher']."</td>";
             $out[] = "<td>$ds".$book['price']."</td>";
             $out[] = "<td><a href='showBooks.php?bid=$b'>Buy</a></td>";
