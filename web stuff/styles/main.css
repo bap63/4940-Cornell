@@ -20,6 +20,12 @@
     font-style:none;
 }
 
+#headerLink * :hover{
+    font-style:italic;
+    text-decoration: underline;
+}
+
+
 #logo{
    background: url("../images/logo.png") no-repeat #2d2c2c;
    margin-left:1em;
@@ -31,6 +37,16 @@
    -webkit-text-stroke: 1px;
    text-shadow: #fff 0px 1px 1px;
 }
+
+
+a{
+    color: #00F;
+}
+
+a:visited{
+    color: #00F;
+}
+
 
 #wrapper {
   width: 900px;

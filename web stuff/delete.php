@@ -5,7 +5,6 @@
     $styles[] = 'http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css';
     $scripts[] = 'http://code.jquery.com/jquery-1.8.3.js';
     $scripts[] = 'http://code.jquery.com/ui/1.9.2/jquery-ui.js';
-    $scripts[] = 'scripts/autocomplete.js';
     include 'header.php';
     
     $error = '';
