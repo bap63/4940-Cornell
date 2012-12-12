@@ -4,13 +4,29 @@ $request_headers = getBestSupportedMimeType();
 
 function returnMimeType($rh, $books){
     if(key($rh) == "application/json"){
-        returnJSON($books);
+    	returnJSON($books);
     }
     else if(key($rh) == "application/xml"){
     	returnXML($books);
     }
     else if(key($rh) == "text/csv"){
     	returnCSV($books);
+    }
+    else{
+	//Unsupported MIME type send HTTP 406
+    	header(':', true, 406);
+    }
+}
+
+function courseList($rh, $courses){
+    if(key($rh) == "application/json"){
+    	returnJSON($courses);
+    }
+    else if(key($rh) == "application/xml"){
+    	returnXMLCourses($courses);
+    }
+    else if(key($rh) == "text/csv"){
+    	returnCSV($courses);
     }
     else{
 	//Unsupported MIME type send HTTP 406
@@ -33,7 +49,19 @@ function returnXML($books) {
 	$root->addChild('title', $book['title']);
 	$root->addChild('author', $book['author']);
 	$root->addChild('publisher', $book['publisher']);
+	$root->addChild('courseName', $book['courseName']);
 	$root->addChild('price', $book['price']);
+    }
+    print_r($xml->asXML());
+}
+function returnXMLCourses($courses) {
+    header('Content-type: application/xml');
+    $xml = new SimpleXMLElement('<xml/>');
+    foreach($courses as $course){
+	//create the root element
+	$root = $xml->addChild('course');
+	$root->addChild('name', $course['name']);
+	$root->addChild('term', $course['term']);
     }
     print_r($xml->asXML());
 }
