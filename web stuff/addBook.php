@@ -68,14 +68,14 @@
         }
     }
 ?>
-    <h2><?php echo $bTitle;?></h2>
+   <p class='blTitleB'><?php echo $bTitle;?></p>
     <form action="addBook.php?bid=<?php echo $bid;?>" method="post">
         <p id="errors"><?php echo $error ?></p>
         <p id="success"><?php echo $success ?></p>
 	Email<input type="text" name = "email" id="emailInput"/>
-	Price $<input type="text" name = "price" id="priceInput"/><br />
+	Price $<input type="text" name = "price" id="priceInput"/>
+	<input type="submit" class="button" value="Add" /><br />
         Notes (Edition, quality, etc.)<input type="text" name="notes" id="noteInput"/><br />
-	<input type="submit" value="Add" />
     </form>
     
 <?php

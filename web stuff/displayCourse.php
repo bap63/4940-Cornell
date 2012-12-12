@@ -16,7 +16,7 @@
 	$ctl = $dbh->prepare($sql);
 	$ctl->execute();
 	$books = $ctl->fetchAll(PDO::FETCH_ASSOC);
-
+	
     	returnMimeType($request_headers, $books);
     	exit;
     }
@@ -37,19 +37,19 @@
     $courseQuery = split(" ",$_GET['courseSearch']);
     $cN = str_replace('-','',$courseQuery[0]);
     $cT = $courseQuery[1];
+    $cD = $cN." ($cT)";
     $sql = "SELECT  * FROM book where courseName = '$cN' AND term = '$cT'";
     $ctl = $dbh->prepare($sql);
     $ctl->execute();
     $books = $ctl->fetchAll(PDO::FETCH_ASSOC);
     $mD ="itemscope itemtype='http://schema.org/Book'";
-?>
-    <table id="booktable">
-<?php
+    print "<table id='booktable'> \n";
     if (count($books) == 0){
         print "<p>No Books listed for this course</p>";
     }
     else{
-	print "<h2>$cN</h2>";
+	
+	print "<p class='blTitleB'>$cD</p>";
         foreach($books as $book)
         {
 	    $ds = '$';

@@ -31,7 +31,7 @@
     <form action="displayCourse.php" method="GET">
 	Please Select A Course
 	<input type="text" id="courseSearch" name = "courseSearch" />
-	<input type="submit" value="Find Books" />
+	<input type="submit" value="Find Books" class="button"/>
     </form>
     
 <?php

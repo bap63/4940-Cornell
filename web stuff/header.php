@@ -26,7 +26,7 @@ if(isset($scripts)){
 ?>
 </head>
   <body>
-	<a href='/'><div id="header">
+	<a id="headerLink" href='/'><div id="header">
 		<div id="logo"><p>BookScore</p>  </div>	
 	</div></a>
 	<div id ="content">

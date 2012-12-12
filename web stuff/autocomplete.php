@@ -4,7 +4,7 @@ if ( !isset($_REQUEST['term']) )
 	exit;
 $query = $_REQUEST['term'];
 
-$sql = "SELECT name, term FROM course WHERE name like '$query%' LIMIT 0,20";//Fetches top 20 courses
+$sql = "SELECT name, term FROM course WHERE name like '$query%' LIMIT 0,15";//Fetches top 15 courses
 $ctl = $dbh->prepare($sql);
 $ctl->execute();
 $courses = $ctl->fetchAll(PDO::FETCH_ASSOC);

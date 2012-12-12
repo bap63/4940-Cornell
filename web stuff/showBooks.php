@@ -16,16 +16,17 @@
     $bid = $_GET['bid'];
     $posts = getPosts($dbh,$bid);
     $title = getBookTitle($dbh,$bid);
-    $mD = "itemscope itemtype='http://schema.org/Offer'";
 ?>
-    <h1>Book Listing</h1>
-    <table id="booktable">
+    <p class='blTitle'>Buy Books</p>
+    <span itemscope itemtype='http://schema.org/Offer'>
 <?php
     if (count($posts) == 0){
-        print "<p>No Books being currently sold for this course</p>";
+        print "<p>No Books being currently sold for this course</p>\n";
+	print "<table id='booktable'>";
     }
     else{
-	print "<h1>$title</h1>";
+	print "<p class='blTitleB' itemprop='name'>$title</p> \n";
+	print "<table id='booktable'>";
         foreach($posts as $post)
         {
             $out = array();
@@ -35,12 +36,11 @@
             $out[] = "<td itemprop='description'>".$post['notes']."</td>";
             $out[] = "<td itemprop='availabilityStarts' >".$post['date']."</td>";
 	    $out[] = "<td><a href='buyBook.php?pid=$pid'>Buy Now</a></td>";
-	    $out[] = "<td itemprop='name' class='hiddenMD'>$title</td>";
-            print "<tr $mD>".join('',$out)."</tr>";
+            print "<tr >".join('',$out)."</tr>";
         }
     }
 ?>
-    </table>
+    </table></span>
 <?php
     include 'footer.php';
 ?>

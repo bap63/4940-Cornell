@@ -42,14 +42,14 @@
     
     
 ?>
-    <h2>Book Listing</h2>
+    <p class='blTitle'>Buy Book</p>
     <table id="booktable">
-    <h2><?php echo $title. " - $".$price;?></h2>
+    <p class='blTitleB'><?php echo $title. " - $".$price;?></p>
     <form action="buyBook.php?pid=<?php echo $pid;?>" method="post">
         <p id="errors"><?php echo $error ?></p>
         <p id="success"><?php echo $success ?></p>
 	Email<input type="text" name = "email" id="emailInput"/>
-	<input type="submit" value="Contact Seller" />
+	<input type="submit" class="button" value="Contact Seller" />
     </form>
 
     </table>

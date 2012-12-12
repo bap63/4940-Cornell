@@ -39,7 +39,7 @@
 	}
     }
 ?>
-    Delete a posting
+    <p class='blTitleB'>Delete a posting</p>
     <form action="delete.php" method="post">
 	<p id="errors"><?php echo $error ?></p>
         <p id="success"><?php echo $success ?></p>
