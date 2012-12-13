@@ -11,6 +11,14 @@
 ?>
     
 <?php
+
+	print("<p>BookScore is dedicated to making textbooks accessible to students.</br>
+	Just type in a class name and get started!
+	<p>");
+
+?>
+    
+<?php
     
     
     /*
@@ -33,6 +41,10 @@
 	<input type="text" id="courseSearch" name = "courseSearch" />
 	<input type="submit" value="Find Books" class="button"/>
     </form>
+    
+<?php
+	print("<img src=\"../images/clockTower.jpg\" />");
+?>
     
 <?php
     include 'footer.php';

@@ -63,8 +63,6 @@ h1,h2{
   margin-bottom: 0em;
   padding-top: 2em;
   padding-bottom: 2em;
-  padding-left: 25em;
-  padding-right: 25em;
   min-height: 37.5em;
   min-width:40em;
   text-align: center;
@@ -153,4 +151,11 @@ input{
     color:#AAA;
     margin-bottom:1em;
     font-family: Verdana;
+}
+
+
+img{
+position:absolute;
+left: 0px;
+top: 200px;
 }
